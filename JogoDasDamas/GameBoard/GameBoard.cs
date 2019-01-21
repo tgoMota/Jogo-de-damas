@@ -122,7 +122,7 @@ namespace JogoDasDamas
                         if (!Pieces[i, j].isLady)
                             Console.ForegroundColor = Pieces[i, j].Color;
                         else
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
 
                         Console.Write(" " + Pieces[i, j].ToString() + " ");
                     }
@@ -369,6 +369,9 @@ namespace JogoDasDamas
             {
                 for (int c = 0; c < 8; ++c)
                 {
+                    if (Pieces[l, c] != null)
+                        Pieces[l, c].canEat = false;
+
                     if (!Menu.eatBack)
                     {
                         if (Pieces[l, c] != null && Pieces[l, c].Color == ConsoleColor.White && !blackTurn || Pieces[l,c] != null && Pieces[l,c].isLady && Pieces[l,c].isMyTurn(blackTurn)) // SE
@@ -427,9 +430,6 @@ namespace JogoDasDamas
                                 if (Pieces[i, j] == null && !Pieces[l,c].isLady)
                                     break;
 
-                               // if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                 //   piecesFounds = 0;
-
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
 
@@ -470,9 +470,6 @@ namespace JogoDasDamas
 
                                 if (Pieces[i, j] == null && !Pieces[l,c].isLady)
                                     break;
-
-                                //if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                 //   piecesFounds = 0;
 
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
@@ -515,9 +512,6 @@ namespace JogoDasDamas
 
                                 if (Pieces[i, j] == null && !Pieces[l,c].isLady)
                                     break;
-
-                                //if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                 //   piecesFounds = 0;
 
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
@@ -565,9 +559,6 @@ namespace JogoDasDamas
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
 
-                                ///if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                  //  piecesFounds = 0;
-
                                 if (Pieces[i, j] != null && Pieces[i, j].Color != Pieces[l, c].Color)
                                 {
                                     int a = i + 1;
@@ -609,9 +600,6 @@ namespace JogoDasDamas
 
                                 if (Pieces[i, j] == null && !Pieces[l, c].isLady)
                                     break;
-
-                                //if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                  //  piecesFounds = 0;
 
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
@@ -657,9 +645,6 @@ namespace JogoDasDamas
                                 if (Pieces[i, j] == null && !Pieces[l, c].isLady)
                                     break;
 
-                                //if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                  //  piecesFounds = 0;
-
                                 if (Pieces[i,j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
 
@@ -704,9 +689,6 @@ namespace JogoDasDamas
 
                                 if (Pieces[i, j] == null && !Pieces[l, c].isLady)
                                     break;
-
-                                //if (Pieces[i, j] == null && Pieces[l, c].isLady)
-                                  //  piecesFounds = 0;
 
                                 if (Pieces[i, j] != null && Pieces[i, j].Color == Pieces[l, c].Color)
                                     break;
