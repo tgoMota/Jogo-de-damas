@@ -439,6 +439,14 @@ namespace JogoDasDamas
                                 PieceMoving.possibleMoves();
                                 counter = 1;
                             }
+                            else if(!everEat && Tab.Pieces[posi, posj].isMyTurn(Tab.blackTurn))
+                            {
+                                Tab.Pieces[posi, posj].Tab = Tab.Pieces;
+                                PieceMoving = Tab.Pieces[posi, posj];
+                                PieceMoving.possibleMoves();
+                                counter = 1;
+                            }
+                            
                         }
                         if (isMove && tecla == ConsoleKey.Enter && counter > 1)
                             Tab.movePiece();
