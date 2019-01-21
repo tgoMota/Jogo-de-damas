@@ -319,9 +319,9 @@ namespace JogoDasDamas
                 version();
 
                 tecla = Console.ReadKey().Key;
-                if (tecla == ConsoleKey.DownArrow)
+                if ((int)tecla == 83 || tecla == ConsoleKey.DownArrow)
                     ++optionS;
-                if (tecla == ConsoleKey.UpArrow)
+                if ((int)tecla == 87 || tecla == ConsoleKey.UpArrow)
                     --optionS;
                 if (optionS < 1)
                     optionS = 5;
@@ -375,25 +375,11 @@ namespace JogoDasDamas
                 if(tecla == ConsoleKey.Escape) //voltar ao menu //ESC
                 {
                     Console.CursorVisible = false;
-                    Console.SetCursorPosition(15, 22);
-                    Console.WriteLine("           Do you wanna return to the menu?");
-                    Console.SetCursorPosition(15, 23);
-                    Console.WriteLine("                           ->YES");
-                    Console.SetCursorPosition(15, 24);
-                    Console.WriteLine("                           NO");
                     int optionE = 1;
-                    tecla = Console.ReadKey().Key;
                     while (true)
                     {
-                        Console.Clear();
-                        title();
-                        Tab.printBoard();
-                        version();
-                        Tab.remainingPieces();
-                        Tab.showRoundNumber();
-                        if(tecla == ConsoleKey.UpArrow)
+                        if(optionE == 1)
                         {
-                            optionE = 1;
                             Console.SetCursorPosition(15, 22);
                             Console.WriteLine("           Do you wanna return to the menu?");
                             Console.SetCursorPosition(15, 23);
@@ -402,9 +388,8 @@ namespace JogoDasDamas
                             Console.WriteLine("                           NO");
 
                         }
-                        if (tecla == ConsoleKey.DownArrow)
+                        if (optionE == 2)
                         {
-                            optionE = 2;
                             Console.SetCursorPosition(15, 22);
                             Console.WriteLine("           Do you wanna return to the menu?");
                             Console.SetCursorPosition(15, 23);
@@ -423,7 +408,20 @@ namespace JogoDasDamas
                             else
                                 break; //continua o jogo
                         }
+
                         tecla = Console.ReadKey().Key;
+                        Console.Clear();
+                        title();
+                        Tab.printBoard();
+                        version();
+                        Tab.remainingPieces();
+                        Tab.showRoundNumber();
+
+                        if ((int)tecla == 87 || tecla == ConsoleKey.UpArrow)
+                            optionE = 1;
+                        if ((int)tecla == 83 || tecla == ConsoleKey.DownArrow)
+                            optionE = 2;
+
                     }
                     Console.CursorVisible = true;
                 }
@@ -457,13 +455,13 @@ namespace JogoDasDamas
                 Console.CursorVisible = false;    
 
                 //mover cursor no tabuleiro
-                if (tecla == ConsoleKey.LeftArrow)
+                if ((int)tecla == 65 || tecla == ConsoleKey.LeftArrow) // A 
                     positionX = positionX - 3;
-                if (tecla == ConsoleKey.RightArrow)
+                if ((int)tecla == 68 || tecla == ConsoleKey.RightArrow) // D
                     positionX = positionX + 3;
-                if (tecla == ConsoleKey.DownArrow)
+                if ((int)tecla == 83 || tecla == ConsoleKey.DownArrow) // S
                     positionY++;
-                if (tecla == ConsoleKey.UpArrow)
+                if ((int)tecla == 87 || tecla == ConsoleKey.UpArrow) // W
                     positionY--;
 
                 //se o cursor sair do tabuleiro
