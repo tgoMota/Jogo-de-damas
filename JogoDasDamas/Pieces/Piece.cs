@@ -21,11 +21,6 @@ namespace JogoDasDamas
             canEat = false;
         }
 
-        public Piece()
-        {
-
-        }
-
         public bool isMyTurn(bool blackTurn)
         {
             if (blackTurn && Color == ConsoleColor.Black || !blackTurn && Color == ConsoleColor.White)
@@ -37,7 +32,6 @@ namespace JogoDasDamas
         public void possibleMoves()
         {
             Menu.isMove = true;
-            //canEat = false;
             int movesTrue = 0; //movimentos possiveis
             int l = Pos.Linha;
             int c = Pos.Coluna;
@@ -60,8 +54,13 @@ namespace JogoDasDamas
 
                         if (Tab[k, g] != null && Tab[k,g].Color != Color)
                         {
-                            isThereADifPiece = true;
-                            break;
+                            int proxi = k + 1;
+                            int proxj = g + 1;
+                            if (proxi < 8 && proxj < 8 && Tab[proxi, proxj] == null)
+                            {
+                                isThereADifPiece = true;
+                                break;
+                            }
                         }
                         ++k;
                         ++g;
@@ -110,11 +109,16 @@ namespace JogoDasDamas
 
                         if (Tab[k, g] != null && Tab[k, g].Color != Color)
                         {
-                            isThereADifPiece = true;
-                            break;
+                            int proxi = k + 1;
+                            int proxj = g - 1;
+                            if (proxi < 8 && proxj >= 0 && Tab[proxi, proxj] == null)
+                            {
+                                isThereADifPiece = true;
+                                break;
+                            }
                         }
                         ++k;
-                        ++g;
+                        --g;
                     }
                 }
                 while (true)
@@ -159,10 +163,15 @@ namespace JogoDasDamas
 
                         if (Tab[k, g] != null && Tab[k, g].Color != Color)
                         {
-                            isThereADifPiece = true;
-                            break;
+                            int proxi = k - 1;
+                            int proxj = g + 1;
+                            if (proxi >= 0 && proxj < 8 && Tab[proxi, proxj] == null)
+                            {
+                                isThereADifPiece = true;
+                                break;
+                            }
                         }
-                        ++k;
+                        --k;
                         ++g;
                     }
                 }
@@ -208,11 +217,16 @@ namespace JogoDasDamas
 
                         if (Tab[k, g] != null && Tab[k, g].Color != Color)
                         {
-                            isThereADifPiece = true;
-                            break;
+                            int proxi = k - 1;
+                            int proxj = g - 1;
+                            if (proxi >= 0 && proxj >= 0 && Tab[proxi, proxj] == null)
+                            {
+                                isThereADifPiece = true;
+                                break;
+                            }
                         }
-                        ++k;
-                        ++g;
+                        --k;
+                        --g;
                     }
                 }
                 while (true)

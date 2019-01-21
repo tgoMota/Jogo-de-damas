@@ -145,7 +145,7 @@ namespace JogoDasDamas
             int posAntigai = Menu.PieceMoving.Pos.Linha;
             int posAntigaj = Menu.PieceMoving.Pos.Coluna;
 
-            if (Menu.PieceMoving.Moves[posi, posj] || requiredMoves[posi, posj] && Math.Abs(posi - posAntigai) == Math.Abs(posj - posAntigaj))
+            if (Menu.PieceMoving.Moves[posi, posj] && !Menu.PieceMoving.canEat && Menu.everEat || Menu.PieceMoving.Moves[posi, posj] && !Menu.everEat || requiredMoves[posi, posj] && Math.Abs(posi - posAntigai) == Math.Abs(posj - posAntigaj))
             {
                 Menu.PieceMoving.Pos.Linha = posi;
                 Menu.PieceMoving.Pos.Coluna = posj;
@@ -154,7 +154,7 @@ namespace JogoDasDamas
                 Pieces[posAntigai, posAntigaj] = null;
                 Pieces[posi, posj].ateNow = false;
 
-                if (Math.Abs(posi - posAntigai) == 2 && Math.Abs(posj - posAntigaj) == 2)
+                if (Math.Abs(posi - posAntigai) == 2 && Math.Abs(posj - posAntigaj) == 2 && !Pieces[posi,posj].isLady)
                 {
                     int removei = (posi + posAntigai) / 2; //posição i,j da peça inimiga a ser destruida
                     int removej = (posj + posAntigaj) / 2;
@@ -278,10 +278,6 @@ namespace JogoDasDamas
                 Menu.PieceMoving.isLady = true; //transformando em dama
         }   
 
-        public void controlCursor()
-        {
-
-        }
 
         public void remainingPieces()
         {
@@ -345,9 +341,9 @@ namespace JogoDasDamas
         {
             if (remainingB == 0 || remainingW == 0)
             {
-                Console.SetCursorPosition(15, 22);
+                Console.SetCursorPosition(28, 22);
                 Console.WriteLine("WINNER WINNER CHICKEN DINNER!");
-                Console.SetCursorPosition(15, 23);
+                Console.SetCursorPosition(28, 23);
 
                 if (remainingB == 0)
                     Console.WriteLine("    The Blacks wins");
@@ -355,7 +351,7 @@ namespace JogoDasDamas
                 if (remainingW == 0)
                     Console.WriteLine("    The Whites wins");
 
-                Console.SetCursorPosition(15, 25);
+                Console.SetCursorPosition(28, 25);
                 Console.WriteLine("Pressione alguma tecla para voltar ao menu...");
                 Console.ReadLine();
                 Menu.Display();

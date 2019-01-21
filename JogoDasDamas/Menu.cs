@@ -13,6 +13,7 @@ namespace JogoDasDamas
         public static int counter { get; set; }
         public static bool eatBack { get; set; } //indica se está ativada a opcao de comer para trás
         public static bool showPossibleMoves { get; set; } //indica se está ativada a opcao de mostrar os possiveis movimentos
+        public static bool everEat { get; set; } //indica se está ativada a opcao de sempre comer quando possivel
 
 
         public static void title()
@@ -76,8 +77,16 @@ namespace JogoDasDamas
                     Console.ResetColor();
                     Console.SetCursorPosition(35, 11);
                     Console.Write("Required captures: ");
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("ON");
+                    if (everEat)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("ON");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("OFF");
+                    }
                     Console.SetCursorPosition(35, 12);
                     Console.ResetColor();
                     Console.Write("Checkers need to stop a house after the capture: ");
@@ -119,8 +128,16 @@ namespace JogoDasDamas
                     Console.ResetColor();
                     Console.SetCursorPosition(35, 11);
                     Console.Write("-> Required captures: ");
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("ON");
+                    if (everEat)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("ON");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("OFF");
+                    }
                     Console.SetCursorPosition(35, 12);
                     Console.ResetColor();
                     Console.Write("Checkers need to stop a house after the capture: ");
@@ -162,8 +179,16 @@ namespace JogoDasDamas
                     Console.ResetColor();
                     Console.SetCursorPosition(35, 11);
                     Console.Write("Required captures: ");
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("ON");
+                    if (everEat)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("ON");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("OFF");
+                    }
                     Console.SetCursorPosition(35, 12);
                     Console.ResetColor();
                     Console.Write("-> Checkers need to stop a house after the capture: ");
@@ -205,8 +230,16 @@ namespace JogoDasDamas
                     Console.ResetColor();
                     Console.SetCursorPosition(35, 11);
                     Console.Write("Required captures: ");
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("ON");
+                    if (everEat)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("ON");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("OFF");
+                    }
                     Console.SetCursorPosition(35, 12);
                     Console.ResetColor();
                     Console.Write("Checkers need to stop a house after the capture: ");
@@ -248,8 +281,16 @@ namespace JogoDasDamas
                     Console.ResetColor();
                     Console.SetCursorPosition(35, 11);
                     Console.Write("Required captures: ");
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("ON");
+                    if (everEat)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("ON");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("OFF");
+                    }
                     Console.SetCursorPosition(35, 12);
                     Console.ResetColor();
                     Console.Write("Checkers need to stop a house after the capture: ");
@@ -291,7 +332,8 @@ namespace JogoDasDamas
                 {
                     if (optionS == 1)
                         eatBack = !eatBack;
-                    //if (optionS == 2)
+                    if (optionS == 2)
+                        everEat = !everEat;
                     // if(optionS == 3)
                     if (optionS == 4)
                         showPossibleMoves = !showPossibleMoves;
@@ -329,21 +371,6 @@ namespace JogoDasDamas
 
                 var tecla = ConsoleKey.LeftArrow; //inicializando tecla com um valor qualquer //var necessita de inicialização
                 tecla = Console.ReadKey().Key;
-
-                if(tecla == ConsoleKey.T && PieceMoving != null) //testando matriz de possiveis movimentos
-                {
-                    Console.Clear();
-                    for(int i = 0; i < 8; ++i)
-                    {
-                        for(int j = 0; j< 8; ++j)
-                        {
-                            Console.Write(PieceMoving.Moves[i,j] + " ");
-
-                        }
-                        Console.WriteLine();
-                    }
-                    Console.ReadLine();
-                }
 
                 if(tecla == ConsoleKey.Escape) //voltar ao menu //ESC
                 {
@@ -440,9 +467,9 @@ namespace JogoDasDamas
                     positionY = 17;
                 if (positionY > 17)
                     positionY = 10;
-                Console.Clear();
 
                 Tab.isThereAWinner();
+                Console.Clear();
 
             }
         }
