@@ -41,12 +41,12 @@ namespace JogoDasDamas
             title();
             Console.WriteLine();
             Console.WriteLine("                                Thiago Mota Carvalho");
-            Console.WriteLine("                     Graduando em Ciência da Computação - UFU ");
+            Console.WriteLine("                     Graduating in Computer Science - UFU ");
             Console.WriteLine("                                        2019");
             Console.WriteLine("                     email: tgomota1@gmail.com");
             version();
             Console.WriteLine();
-            Console.WriteLine("                      Pressione alguma tecla para voltar ao menu...");
+            Console.WriteLine("                      Press any key to return to the menu...");
             Console.ReadKey();
         }
 
