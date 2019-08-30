@@ -1,4 +1,4 @@
 # Jogo-de-damas
-Damas sem GUI e só é jogável no Windows 10.
+Damas sem GUI, aprendendo C#. (Visual Studio)
 
         Developed by Thiago Mota Carvalho
