@@ -1,5 +1,7 @@
 # Checkers-Game
-I developed this game just for good language learning. 
-It runs neatly on Windows 10 CMD.
+
+I develop this game just for good C # language learning. 
+
+It runs perfectly on Windows 10 CMD.
 
         Developed by Thiago Mota Carvalho
